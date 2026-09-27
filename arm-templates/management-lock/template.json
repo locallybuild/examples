@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/locks",
+      "apiVersion": "2022-09-01",
+      "name": "example-lock-from-armtemplate",
+      "properties": {
+        "level": "CanNotDelete",
+        "notes": "Prevents accidental deletion of the resource group"
+      }
+    }
+  ]
+}

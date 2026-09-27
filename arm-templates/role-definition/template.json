@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "roleName": "example-role-definition-from-armtemplate"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/roleDefinitions",
+      "apiVersion": "2022-05-01-preview",
+      "name": "[guid(resourceGroup().id, variables('roleName'))]",
+      "properties": {
+        "roleName": "[variables('roleName')]",
+        "description": "Read-only access to the resource group and its resources",
+        "type": "CustomRole",
+        "permissions": [
+          {
+            "actions": [
+              "Microsoft.Resources/subscriptions/resourceGroups/read",
+              "Microsoft.Resources/subscriptions/resourceGroups/resources/read"
+            ],
+            "notActions": []
+          }
+        ],
+        "assignableScopes": [
+          "[resourceGroup().id]"
+        ]
+      }
+    }
+  ]
+}

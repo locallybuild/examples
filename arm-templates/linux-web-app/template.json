@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2026-03-15",
+      "name": "example-linux-web-app-plan-from-armtemplate",
+      "location": "berlin",
+      "kind": "linux",
+      "sku": {
+        "name": "B1"
+      },
+      "properties": {
+        "reserved": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2026-03-15",
+      "name": "example-linux-web-app-from-armtemplate",
+      "location": "berlin",
+      "kind": "app,linux",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', 'example-linux-web-app-plan-from-armtemplate')]"
+      ],
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', 'example-linux-web-app-plan-from-armtemplate')]",
+        "siteConfig": {
+          "linuxFxVersion": "NODE|22-lts"
+        }
+      }
+    }
+  ]
+}

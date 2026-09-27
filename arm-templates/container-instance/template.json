@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2025-09-01",
+      "name": "example-containergroup-from-armtemplate",
+      "location": "berlin",
+      "properties": {
+        "containers": [
+          {
+            "name": "hello-world",
+            "properties": {
+              "image": "mcr.microsoft.com/azuredocs/aci-helloworld",
+              "ports": [
+                {
+                  "port": 80,
+                  "protocol": "TCP"
+                }
+              ],
+              "resources": {
+                "requests": {
+                  "cpu": 1.0,
+                  "memoryInGB": 1.5
+                }
+              }
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "port": 80,
+              "protocol": "TCP"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

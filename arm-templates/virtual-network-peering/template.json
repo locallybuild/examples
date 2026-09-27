@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2025-07-01",
+      "name": "example-vnet-1-from-armtemplate",
+      "location": "berlin",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2025-07-01",
+      "name": "example-vnet-2-from-armtemplate",
+      "location": "berlin",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.1.0.0/16"
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+      "apiVersion": "2025-07-01",
+      "name": "example-vnet-1-from-armtemplate/example-peering-1-to-2-from-armtemplate",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', 'example-vnet-1-from-armtemplate')]",
+        "[resourceId('Microsoft.Network/virtualNetworks', 'example-vnet-2-from-armtemplate')]"
+      ],
+      "properties": {
+        "allowVirtualNetworkAccess": true,
+        "remoteVirtualNetwork": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworks', 'example-vnet-2-from-armtemplate')]"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+      "apiVersion": "2025-07-01",
+      "name": "example-vnet-2-from-armtemplate/example-peering-2-to-1-from-armtemplate",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', 'example-vnet-2-from-armtemplate')]",
+        "[resourceId('Microsoft.Network/virtualNetworks', 'example-vnet-1-from-armtemplate')]"
+      ],
+      "properties": {
+        "allowVirtualNetworkAccess": true,
+        "remoteVirtualNetwork": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworks', 'example-vnet-1-from-armtemplate')]"
+        }
+      }
+    }
+  ]
+}

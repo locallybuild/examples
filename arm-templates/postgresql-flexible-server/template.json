@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "comments": "This is a local emulator example - real deployments should pass the administrator password in from a secret (e.g. a securestring parameter sourced from Key Vault).",
+      "type": "Microsoft.DBforPostgreSQL/flexibleServers",
+      "apiVersion": "2025-08-01",
+      "name": "example-postgresql-from-armtemplate",
+      "location": "berlin",
+      "sku": {
+        "name": "Standard_B1ms",
+        "tier": "Burstable"
+      },
+      "properties": {
+        "version": "16",
+        "storage": {
+          "storageSizeGB": 32
+        },
+        "administratorLogin": "exampleadmin",
+        "administratorLoginPassword": "Example-Passw0rd!"
+      }
+    },
+    {
+      "type": "Microsoft.DBforPostgreSQL/flexibleServers/databases",
+      "apiVersion": "2025-08-01",
+      "name": "example-postgresql-from-armtemplate/example-database",
+      "properties": {
+        "charset": "UTF8",
+        "collation": "en_US.utf8"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.DBforPostgreSQL/flexibleServers', 'example-postgresql-from-armtemplate')]"
+      ]
+    }
+  ]
+}

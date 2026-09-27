@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2026-06-01",
+      "name": "exsharearmtemplate",
+      "location": "berlin",
+      "kind": "StorageV2",
+      "sku": {
+        "name": "Standard_LRS"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
+      "apiVersion": "2026-06-01",
+      "name": "exsharearmtemplate/default/example-share-from-armtemplate",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', 'exsharearmtemplate')]"
+      ],
+      "properties": {
+        "shareQuota": 50
+      }
+    }
+  ]
+}

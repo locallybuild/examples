@@ -1,0 +1,7 @@
+name: locally-pulumi-virtual-network
+description: An example demonstrating how to use Pulumi to provision a Virtual Network in Locally
+runtime: go
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: azure-go

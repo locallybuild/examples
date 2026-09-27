@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2026-01-01",
+      "name": "example-sbtopic-from-armtemplate",
+      "location": "berlin",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard"
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics",
+      "apiVersion": "2026-01-01",
+      "name": "example-sbtopic-from-armtemplate/example-topic-from-armtemplate",
+      "properties": {},
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', 'example-sbtopic-from-armtemplate')]"
+      ]
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+      "apiVersion": "2026-01-01",
+      "name": "example-sbtopic-from-armtemplate/example-topic-from-armtemplate/example-subscription-from-armtemplate",
+      "properties": {
+        "maxDeliveryCount": 10
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', 'example-sbtopic-from-armtemplate', 'example-topic-from-armtemplate')]"
+      ]
+    }
+  ]
+}

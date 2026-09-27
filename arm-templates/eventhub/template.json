@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2026-01-01",
+      "name": "example-eh-from-armtemplate",
+      "location": "berlin",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard",
+        "capacity": 1
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs",
+      "apiVersion": "2026-01-01",
+      "name": "example-eh-from-armtemplate/example-eventhub-from-armtemplate",
+      "properties": {
+        "partitionCount": 2,
+        "messageRetentionInDays": 1
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', 'example-eh-from-armtemplate')]"
+      ]
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+      "apiVersion": "2026-01-01",
+      "name": "example-eh-from-armtemplate/example-eventhub-from-armtemplate/example-consumer-group-from-armtemplate",
+      "properties": {},
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', 'example-eh-from-armtemplate', 'example-eventhub-from-armtemplate')]"
+      ]
+    }
+  ]
+}

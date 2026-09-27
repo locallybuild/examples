@@ -1,0 +1,51 @@
+version: 2
+updates:
+  # Azure SDK for Go & Pulumi (Go) examples
+  - package-ecosystem: "gomod"
+    directories:
+      - "/azure-sdk-for-go/*"
+      - "/azure-sdk-for-go/servicebus/*"
+      - "/pulumi/azure-classic-golang/*"
+      - "/pulumi/azure-native-golang/*"
+    schedule:
+      interval: "weekly"
+    groups:
+      go:
+        patterns:
+          - "*"
+
+  # Azure SDK for .NET examples
+  - package-ecosystem: "nuget"
+    directories:
+      - "/azure-sdk-for-dotnet/*"
+      - "/azure-sdk-for-dotnet/servicebus/*"
+    schedule:
+      interval: "weekly"
+    groups:
+      nuget:
+        patterns:
+          - "*"
+
+  # HashiCorp Terraform examples
+  - package-ecosystem: "terraform"
+    directories:
+      - "/hashicorp-terraform/*"
+      - "/azure-sdk-for-dotnet/servicebus/terraform"
+      - "/azure-sdk-for-go/servicebus/terraform"
+    schedule:
+      interval: "weekly"
+    groups:
+      terraform:
+        patterns:
+          - "*"
+
+  # OpenTofu examples
+  - package-ecosystem: "opentofu"
+    directories:
+      - "/opentofu/*"
+    schedule:
+      interval: "weekly"
+    groups:
+      opentofu:
+        patterns:
+          - "*"

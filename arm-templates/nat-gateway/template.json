@@ -1,0 +1,65 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2025-07-01",
+      "name": "example-nat-public-ip-from-armtemplate",
+      "location": "berlin",
+      "properties": {
+        "publicIPAllocationMethod": "Static"
+      },
+      "sku": {
+        "name": "Standard"
+      }
+    },
+    {
+      "type": "Microsoft.Network/natGateways",
+      "apiVersion": "2025-07-01",
+      "name": "example-nat-gateway-from-armtemplate",
+      "location": "berlin",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', 'example-nat-public-ip-from-armtemplate')]"
+      ],
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {
+        "publicIpAddresses": [
+          {
+            "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'example-nat-public-ip-from-armtemplate')]"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2025-07-01",
+      "name": "example-vnet-from-armtemplate",
+      "location": "berlin",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks/subnets",
+      "apiVersion": "2025-07-01",
+      "name": "example-vnet-from-armtemplate/subnet-1",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', 'example-vnet-from-armtemplate')]",
+        "[resourceId('Microsoft.Network/natGateways', 'example-nat-gateway-from-armtemplate')]"
+      ],
+      "properties": {
+        "addressPrefix": "10.0.1.0/24",
+        "natGateway": {
+          "id": "[resourceId('Microsoft.Network/natGateways', 'example-nat-gateway-from-armtemplate')]"
+        }
+      }
+    }
+  ]
+}

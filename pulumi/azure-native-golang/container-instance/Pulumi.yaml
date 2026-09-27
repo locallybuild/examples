@@ -1,0 +1,7 @@
+name: container-instance
+description: A Pulumi program to create a Container Instance using the Azure Native provider
+runtime: go
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: azure-go

@@ -1,0 +1,6 @@
+.claude/
+.idea/
+.DS_Store
+docs/
+terraform.tfstate
+terraform.tfstate.backup

@@ -1,0 +1,7 @@
+name: locally-pulumi-availability-set
+description: An example demonstrating how to use Pulumi to provision an Availability Set in Locally
+runtime: go
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: azure-go

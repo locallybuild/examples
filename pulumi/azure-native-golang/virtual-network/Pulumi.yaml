@@ -1,0 +1,7 @@
+name: virtual-network
+description: A Pulumi program to create a Virtual Network and a Subnet using the Azure Native provider
+runtime: go
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: azure-go
