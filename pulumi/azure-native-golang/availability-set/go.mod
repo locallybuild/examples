@@ -5,7 +5,7 @@ go 1.27.1
 require (
 	github.com/pulumi/pulumi-azure-native-sdk/compute/v3 v3.28.0
 	github.com/pulumi/pulumi-azure-native-sdk/resources/v3 v3.28.0
-	github.com/pulumi/pulumi/sdk/v3 v3.265.0
+	github.com/pulumi/pulumi/sdk/v3 v3.267.0
 )
 
 require (
