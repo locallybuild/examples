@@ -18,6 +18,7 @@ func main() {
 	clientOptions := azcore.ClientOptions{
 		// Connect to Locally rather than Azure Public
 		Cloud: cloud.Configuration{
+			ActiveDirectoryAuthorityHost: "https://localhost:5677",
 			Services: map[cloud.ServiceName]cloud.ServiceConfiguration{
 				cloud.ResourceManager: {
 					Audience: "https://localhost:5680",
