@@ -1,0 +1,98 @@
+name: Examples
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: examples-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # Pull Requests run the examples they change (or every example, if the CI
+  # itself changes); running this workflow manually runs every example.
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.examples.outputs.matrix }}
+      any: ${{ steps.examples.outputs.any }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - id: examples
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [[ -n "$BASE_SHA" ]]; then
+            python3 .github/scripts/examples.py --base "$BASE_SHA"
+          else
+            python3 .github/scripts/examples.py --all
+          fi
+
+  run:
+    name: ${{ matrix.name }}
+    needs: plan
+    if: needs.plan.outputs.any == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # required: Locally signs in using GitHub's OIDC token
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    env:
+      PULUMI_CONFIG_PASSPHRASE: ci
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - if: matrix.kind == 'bicep'
+        run: |
+          az bicep install
+          echo "$HOME/.azure/bin" >> "$GITHUB_PATH"
+
+      - if: matrix.kind == 'terraform'
+        uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
+        with:
+          terraform_wrapper: false
+
+      - if: matrix.kind == 'opentofu'
+        uses: opentofu/setup-opentofu@a1320f892987e89d278cc92dc5adc984fb93aca4 # v2.0.2
+        with:
+          tofu_wrapper: false
+
+      - if: matrix.kind == 'go' || matrix.kind == 'pulumi'
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: stable
+          cache: false
+
+      - if: matrix.kind == 'dotnet'
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: 10.0.x
+
+      - if: matrix.kind == 'pulumi'
+        uses: pulumi/actions@8e5e406f4007fca908480587cb9893c07090f58d # v7.0.0
+
+      - uses: locallybuild/setup-locally@v1
+        with:
+          team-uuid: ${{ vars.LOCALLY_TEAM_UUID }}
+          plugins: ${{ matrix.plugins != '' && 'custom' || 'none' }}
+          plugins-list: ${{ matrix.plugins }}
+
+      - name: Run examples
+        env:
+          KIND: ${{ matrix.kind }}
+          PATHS: ${{ matrix.paths }}
+        run: |
+          # PATHS is space-separated, and split into one argument per example.
+          # shellcheck disable=SC2086
+          .github/scripts/run-examples.sh "$KIND" $PATHS
+
+      - uses: locallybuild/setup-locally/teardown@v1
+        if: always()
