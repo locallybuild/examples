@@ -1,0 +1,78 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "uniqueName": "example-application-from-armtemplate"
+  },
+  "imports": {
+    "microsoftGraphV1": {
+      "provider": "MicrosoftGraph",
+      "version": "1.0.0"
+    }
+  },
+  "resources": {
+    "owner": {
+      "existing": true,
+      "import": "microsoftGraphV1",
+      "type": "Microsoft.Graph/users@v1.0",
+      "properties": {
+        "userPrincipalName": "ada.lovelace@default.tenants.locally"
+      }
+    },
+    "application": {
+      "import": "microsoftGraphV1",
+      "type": "Microsoft.Graph/applications@v1.0",
+      "properties": {
+        "displayName": "Example Application from an ARM Template",
+        "uniqueName": "[variables('uniqueName')]",
+        "signInAudience": "AzureADMyOrg",
+        "api": {
+          "requestedAccessTokenVersion": 2,
+          "oauth2PermissionScopes": [
+            {
+              "id": "[guid(variables('uniqueName'), 'Data.Read')]",
+              "type": "User",
+              "value": "Data.Read",
+              "isEnabled": true,
+              "adminConsentDisplayName": "Read data",
+              "adminConsentDescription": "Allows the application to read data on behalf of the signed-in user.",
+              "userConsentDisplayName": "Read your data",
+              "userConsentDescription": "Allows the application to read your data."
+            }
+          ]
+        },
+        "appRoles": [
+          {
+            "id": "[guid(variables('uniqueName'), 'Data.Read.All')]",
+            "allowedMemberTypes": [
+              "Application"
+            ],
+            "value": "Data.Read.All",
+            "isEnabled": true,
+            "displayName": "Read all data",
+            "description": "Allows the application to read all data, without a signed-in user."
+          }
+        ],
+        "owners": {
+          "relationships": [
+            "[reference('owner').id]"
+          ]
+        }
+      },
+      "dependsOn": [
+        "owner"
+      ]
+    }
+  },
+  "outputs": {
+    "objectId": {
+      "type": "string",
+      "value": "[reference('application').id]"
+    },
+    "clientId": {
+      "type": "string",
+      "value": "[reference('application').appId]"
+    }
+  }
+}

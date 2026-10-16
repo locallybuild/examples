@@ -59,6 +59,10 @@ See [`arm-templates/`](./arm-templates/) for more information.
 * [Deploy a Cosmos DB SQL Database to Locally using an ARM Template](./arm-templates/cosmosdb-sql-database/): Provisions a Cosmos DB for NoSQL account and a SQL Database with 400 RU/s of provisioned throughput, into a Resource Group of your choosing.
 * [Deploy a DDOS Protection Plan to Locally using an ARM Template](./arm-templates/ddos-protection-plan/): Provisions a DDOS Protection Plan, into a Resource Group of your choosing.
 * [Deploy a DNS Zone to Locally using an ARM Template](./arm-templates/dns-zone/): Provisions a public DNS Zone, into a Resource Group of your choosing.
+* [Deploy an Entra Application to Locally using an ARM Template](./arm-templates/entra-application/): Provisions an Entra Application exposing a delegated `Data.Read` scope and an application `Data.Read.All` App Role, owned by a User from the seeded example directory.
+* [Deploy an Entra Group to Locally using an ARM Template](./arm-templates/entra-group/): Provisions an Entra Security Group, with an Owner, Members and a nested Group from the seeded example directory.
+* [Deploy an Entra Service Principal to Locally using an ARM Template](./arm-templates/entra-service-principal/): Provisions an Entra Application and a Service Principal for it.
+* [Look up an existing Entra User in Locally using an ARM Template](./arm-templates/entra-user/): Looks up an existing Entra User from the seeded example directory, and outputs their Object ID, Display Name and Job Title.
 * [Deploy an Event Grid Topic to Locally using an ARM Template](./arm-templates/eventgrid-topic/): Provisions an Event Grid custom Topic, into a Resource Group of your choosing.
 * [Deploy an Event Hub to Locally using an ARM Template](./arm-templates/eventhub/): Provisions an Event Hubs Namespace, an Event Hub and a Consumer Group, into a Resource Group of your choosing.
 * [Deploy an Event Hubs Namespace to Locally using an ARM Template](./arm-templates/eventhub-namespace/): Provisions an Event Hubs Namespace (Standard SKU), into a Resource Group of your choosing.
@@ -138,6 +142,10 @@ See [`bicep/`](./bicep/) for more information.
 * [Deploy a Cosmos DB SQL Database to Locally using a Bicep Template](./bicep/cosmosdb-sql-database/): Provisions a Cosmos DB for NoSQL account and a SQL Database with 400 RU/s of provisioned throughput, into a Resource Group of your choosing.
 * [Deploy a DDOS Protection Plan to Locally using a Bicep Template](./bicep/ddos-protection-plan/): Provisions a DDOS Protection Plan, into a Resource Group of your choosing.
 * [Deploy a DNS Zone to Locally using a Bicep Template](./bicep/dns-zone/): Provisions a public DNS Zone, into a Resource Group of your choosing.
+* [Deploy an Entra Application to Locally using a Bicep Template](./bicep/entra-application/): Provisions an Entra Application exposing a delegated `Data.Read` scope and an application `Data.Read.All` App Role, owned by a User from the seeded example directory.
+* [Deploy an Entra Group to Locally using a Bicep Template](./bicep/entra-group/): Provisions an Entra Security Group, with an Owner, Members and a nested Group from the seeded example directory.
+* [Deploy an Entra Service Principal to Locally using a Bicep Template](./bicep/entra-service-principal/): Provisions an Entra Application and a Service Principal for it.
+* [Look up an existing Entra User in Locally using a Bicep Template](./bicep/entra-user/): Looks up an existing Entra User from the seeded example directory, and outputs their Object ID, Display Name and Job Title.
 * [Deploy an Event Grid Topic to Locally using a Bicep Template](./bicep/eventgrid-topic/): Provisions an Event Grid custom Topic, into a Resource Group of your choosing.
 * [Deploy an Event Hub to Locally using a Bicep Template](./bicep/eventhub/): Provisions an Event Hubs Namespace, an Event Hub and a Consumer Group, into a Resource Group of your choosing.
 * [Deploy an Event Hubs Namespace to Locally using a Bicep Template](./bicep/eventhub-namespace/): Provisions an Event Hubs Namespace (Standard SKU), into a Resource Group of your choosing.

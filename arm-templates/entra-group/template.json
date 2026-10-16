@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "imports": {
+    "microsoftGraphV1": {
+      "provider": "MicrosoftGraph",
+      "version": "1.0.0"
+    }
+  },
+  "resources": {
+    "owner": {
+      "existing": true,
+      "import": "microsoftGraphV1",
+      "type": "Microsoft.Graph/users@v1.0",
+      "properties": {
+        "userPrincipalName": "ada.lovelace@default.tenants.locally"
+      }
+    },
+    "firstMember": {
+      "existing": true,
+      "import": "microsoftGraphV1",
+      "type": "Microsoft.Graph/users@v1.0",
+      "properties": {
+        "userPrincipalName": "grace.hopper@default.tenants.locally"
+      }
+    },
+    "secondMember": {
+      "existing": true,
+      "import": "microsoftGraphV1",
+      "type": "Microsoft.Graph/users@v1.0",
+      "properties": {
+        "userPrincipalName": "alan.turing@default.tenants.locally"
+      }
+    },
+    "nestedGroup": {
+      "existing": true,
+      "import": "microsoftGraphV1",
+      "type": "Microsoft.Graph/groups@v1.0",
+      "properties": {
+        "uniqueName": "research"
+      }
+    },
+    "group": {
+      "import": "microsoftGraphV1",
+      "type": "Microsoft.Graph/groups@v1.0",
+      "properties": {
+        "displayName": "Example Group from an ARM Template",
+        "description": "An example Security Group provisioned using an ARM Template.",
+        "mailEnabled": false,
+        "mailNickname": "example-group-from-armtemplate",
+        "securityEnabled": true,
+        "uniqueName": "example-group-from-armtemplate",
+        "owners": {
+          "relationships": [
+            "[reference('owner').id]"
+          ]
+        },
+        "members": {
+          "relationships": [
+            "[reference('firstMember').id]",
+            "[reference('secondMember').id]",
+            "[reference('nestedGroup').id]"
+          ]
+        }
+      },
+      "dependsOn": [
+        "firstMember",
+        "nestedGroup",
+        "owner",
+        "secondMember"
+      ]
+    }
+  },
+  "outputs": {
+    "objectId": {
+      "type": "string",
+      "value": "[reference('group').id]"
+    }
+  }
+}
