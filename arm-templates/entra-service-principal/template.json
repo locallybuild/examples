@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "imports": {
+    "microsoftGraphV1": {
+      "provider": "MicrosoftGraph",
+      "version": "1.0.0"
+    }
+  },
+  "resources": {
+    "application": {
+      "import": "microsoftGraphV1",
+      "type": "Microsoft.Graph/applications@v1.0",
+      "properties": {
+        "displayName": "Example Service Principal from an ARM Template",
+        "uniqueName": "example-service-principal-from-armtemplate",
+        "signInAudience": "AzureADMyOrg"
+      }
+    },
+    "servicePrincipal": {
+      "import": "microsoftGraphV1",
+      "type": "Microsoft.Graph/servicePrincipals@v1.0",
+      "properties": {
+        "appId": "[reference('application').appId]"
+      },
+      "dependsOn": [
+        "application"
+      ]
+    }
+  },
+  "outputs": {
+    "applicationObjectId": {
+      "type": "string",
+      "value": "[reference('application').id]"
+    },
+    "servicePrincipalObjectId": {
+      "type": "string",
+      "value": "[reference('servicePrincipal').id]"
+    },
+    "clientId": {
+      "type": "string",
+      "value": "[reference('application').appId]"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "userPrincipalName": {
+      "type": "string",
+      "defaultValue": "ada.lovelace@default.tenants.locally",
+      "metadata": {
+        "description": "The User Principal Name of the User to look up - defaults to Ada Lovelace, from the example directory seeded into Locally."
+      }
+    }
+  },
+  "imports": {
+    "microsoftGraphV1": {
+      "provider": "MicrosoftGraph",
+      "version": "1.0.0"
+    }
+  },
+  "resources": {
+    "user": {
+      "existing": true,
+      "import": "microsoftGraphV1",
+      "type": "Microsoft.Graph/users@v1.0",
+      "properties": {
+        "userPrincipalName": "[parameters('userPrincipalName')]"
+      }
+    }
+  },
+  "outputs": {
+    "objectId": {
+      "type": "string",
+      "value": "[reference('user').id]"
+    },
+    "displayName": {
+      "type": "string",
+      "value": "[reference('user').displayName]"
+    },
+    "jobTitle": {
+      "type": "string",
+      "value": "[reference('user').jobTitle]"
+    }
+  }
+}
