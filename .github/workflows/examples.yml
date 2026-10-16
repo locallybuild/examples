@@ -91,7 +91,7 @@ jobs:
         run: |
           sudo "$(command -v locally)" configure dns
           locally configure dns --status
-          getent hosts ci-check.vault.locally
+          getent hosts control-plane.locally
 
       - name: Run examples
         env:
