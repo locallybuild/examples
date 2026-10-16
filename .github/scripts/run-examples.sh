@@ -24,9 +24,15 @@ run_example() {
     terraform | opentofu)
       local tool=terraform
       [[ "$kind" == "opentofu" ]] && tool=tofu
-      "$tool" init -input=false &&
-        locally run "$tool" apply -auto-approve -input=false &&
-        locally run "$tool" destroy -auto-approve -input=false
+      "$tool" init -input=false || return 1
+
+      # Destroy even when the apply fails, so that anything it did create
+      # doesn't collide with the next example (many share a Resource Group).
+      locally run "$tool" apply -auto-approve -input=false
+      local applied=$?
+      locally run "$tool" destroy -auto-approve -input=false
+      local destroyed=$?
+      (( applied == 0 && destroyed == 0 ))
       ;;
     go)
       go build -o example . &&
@@ -37,10 +43,15 @@ run_example() {
         locally run dotnet run --no-build
       ;;
     pulumi)
-      pulumi stack init ci --non-interactive &&
-        locally run pulumi up --yes --skip-preview --non-interactive &&
-        locally run pulumi destroy --yes --skip-preview --non-interactive &&
+      pulumi stack init ci --non-interactive || return 1
+
+      # As above, destroy even when the update fails.
+      locally run pulumi up --yes --skip-preview --non-interactive
+      local applied=$?
+      locally run pulumi destroy --yes --skip-preview --non-interactive &&
         pulumi stack rm ci --yes --non-interactive
+      local destroyed=$?
+      (( applied == 0 && destroyed == 0 ))
       ;;
     *)
       echo "unknown kind: ${kind}" >&2
@@ -56,10 +67,12 @@ fi
 failed=()
 for path in "$@"; do
   echo "::group::${path}"
+  # The leading newline closes the group even when the example's output
+  # doesn't end in one.
   if (cd "$path" && run_example); then
-    echo "::endgroup::"
+    printf '\n::endgroup::\n'
   else
-    echo "::endgroup::"
+    printf '\n::endgroup::\n'
     echo "::error title=Example failed::${path}"
     failed+=("$path")
   fi
