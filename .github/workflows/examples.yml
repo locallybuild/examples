@@ -85,14 +85,6 @@ jobs:
           plugins: ${{ matrix.plugins != '' && 'custom' || 'none' }}
           plugins-list: ${{ matrix.plugins }}
 
-      # Data planes (e.g. Key Vault) are reached on *.locally, which the runner's
-      # resolver doesn't know about - so route it to Locally's DNS.
-      - name: Resolve *.locally
-        run: |
-          sudo "$(command -v locally)" configure dns
-          locally configure dns --status
-          getent hosts control-plane.locally
-
       - name: Run examples
         env:
           KIND: ${{ matrix.kind }}
