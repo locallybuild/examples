@@ -3,9 +3,9 @@ module github.com/locallybuild/examples/pulumi/azure-native-golang/container-ins
 go 1.27.1
 
 require (
-	github.com/pulumi/pulumi-azure-native-sdk/containerinstance/v3 v3.28.0
-	github.com/pulumi/pulumi-azure-native-sdk/resources/v3 v3.28.0
-	github.com/pulumi/pulumi/sdk/v3 v3.269.0
+	github.com/pulumi/pulumi-azure-native-sdk/containerinstance/v3 v3.29.0
+	github.com/pulumi/pulumi-azure-native-sdk/resources/v3 v3.29.0
+	github.com/pulumi/pulumi/sdk/v3 v3.270.0
 )
 
 require (
@@ -75,7 +75,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
-	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.28.0 // indirect
+	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.29.0 // indirect
 	github.com/pulumi/pulumi-cloud-sdk/go v1.20260924.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.16.0 // indirect
