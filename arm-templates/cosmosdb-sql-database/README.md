@@ -12,6 +12,8 @@ o888ooooood8 `Y8bod8P' `Y8bod8P' `Y888\"\"8o o888o o888o     .8'
 
 # Example: Deploy a Cosmos DB SQL Database to Locally using an ARM Template
 
+[![Deploy to Locally](https://locally.build/deploy-to-locally.svg)](https://localhost:5678/deploy-to-locally?uri=https%3A%2F%2Fraw.githubusercontent.com%2Flocallybuild%2Fexamples%2Fmain%2Farm-templates%2Fcosmosdb-sql-database%2Ftemplate.json)
+
 This example shows how to deploy a Cosmos DB SQL Database to [Locally Build](https://locally.build) using an ARM Template.
 
 This example provisions a Cosmos DB for NoSQL account and a SQL Database with 400 RU/s of provisioned throughput, into a Resource Group of your choosing.
