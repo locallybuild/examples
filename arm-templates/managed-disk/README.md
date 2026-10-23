@@ -12,6 +12,8 @@ o888ooooood8 `Y8bod8P' `Y8bod8P' `Y888\"\"8o o888o o888o     .8'
 
 # Example: Deploy a Managed Disk to Locally using an ARM Template
 
+[![Deploy to Locally](https://locally.build/deploy-to-locally.svg)](https://localhost:5678/deploy-to-locally?uri=https%3A%2F%2Fraw.githubusercontent.com%2Flocallybuild%2Fexamples%2Fmain%2Farm-templates%2Fmanaged-disk%2Ftemplate.json)
+
 This example shows how to deploy a Managed Disk to [Locally Build](https://locally.build) using an ARM Template.
 
 This example provisions an empty 32 GB Managed Disk, into a Resource Group of your choosing.

@@ -12,6 +12,8 @@ o888ooooood8 `Y8bod8P' `Y8bod8P' `Y888\"\"8o o888o o888o     .8'
 
 # Example: Look up an existing Entra User in Locally using an ARM Template
 
+[![Deploy to Locally](https://locally.build/deploy-to-locally.svg)](https://localhost:5678/deploy-to-locally?uri=https%3A%2F%2Fraw.githubusercontent.com%2Flocallybuild%2Fexamples%2Fmain%2Farm-templates%2Fentra-user%2Ftemplate.json)
+
 This example shows how to reference an existing Entra User in [Locally Build](https://locally.build) using an ARM Template.
 
 This example looks up an existing Entra User (by default Ada Lovelace, from the example directory seeded into Locally) and outputs their Object ID, Display Name and Job Title.

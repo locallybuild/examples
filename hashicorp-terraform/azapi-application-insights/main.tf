@@ -18,7 +18,7 @@ locals {
 
 resource "azapi_resource" "resource_group" {
   type      = "Microsoft.Resources/resourceGroups@2025-04-01"
-  name      = "terraform-azapi-resources"
+  name      = "terraform-azapi-application-insights"
   location  = local.location
   parent_id = "/subscriptions/${data.azapi_client_config.current.subscription_id}"
   tags = {

@@ -17,7 +17,7 @@ locals {
 }
 
 resource "azurerm_resource_group" "example" {
-  name     = "terraform-resources"
+  name     = "terraform-azurerm-linux-virtual-machine"
   location = local.location
   tags = {
     "source" : "terraform"

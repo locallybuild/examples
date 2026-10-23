@@ -12,6 +12,8 @@ o888ooooood8 `Y8bod8P' `Y8bod8P' `Y888\"\"8o o888o o888o     .8'
 
 # Example: Deploy an Entra Application to Locally using an ARM Template
 
+[![Deploy to Locally](https://locally.build/deploy-to-locally.svg)](https://localhost:5678/deploy-to-locally?uri=https%3A%2F%2Fraw.githubusercontent.com%2Flocallybuild%2Fexamples%2Fmain%2Farm-templates%2Fentra-application%2Ftemplate.json)
+
 This example shows how to deploy an Entra Application (App Registration) to [Locally Build](https://locally.build) using an ARM Template.
 
 This example provisions an Entra Application exposing a delegated `Data.Read` scope and an application `Data.Read.All` App Role, owned by Ada Lovelace (from the example directory seeded into Locally).

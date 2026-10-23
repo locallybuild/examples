@@ -17,7 +17,7 @@ locals {
 }
 
 resource "azurerm_resource_group" "example" {
-  name     = "terraform-resources"
+  name     = "terraform-azurerm-cosmosdb-sql-database"
   location = local.location
   tags = {
     "source" : "terraform"

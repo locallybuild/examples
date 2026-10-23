@@ -12,6 +12,8 @@ o888ooooood8 `Y8bod8P' `Y8bod8P' `Y888\"\"8o o888o o888o     .8'
 
 # Example: Deploy a Custom Role Definition to Locally using an ARM Template
 
+[![Deploy to Locally](https://locally.build/deploy-to-locally.svg)](https://localhost:5678/deploy-to-locally?uri=https%3A%2F%2Fraw.githubusercontent.com%2Flocallybuild%2Fexamples%2Fmain%2Farm-templates%2Frole-definition%2Ftemplate.json)
+
 This example shows how to deploy a Custom Role Definition to [Locally Build](https://locally.build) using an ARM Template.
 
 This example provisions a Custom Role Definition assignable at the Resource Group, into a Resource Group of your choosing.
