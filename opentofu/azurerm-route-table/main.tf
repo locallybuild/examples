@@ -17,7 +17,7 @@ locals {
 }
 
 resource "azurerm_resource_group" "example" {
-  name     = "opentofu-resources"
+  name     = "opentofu-azurerm-route-table"
   location = local.location
   tags = {
     "source" : "opentofu"

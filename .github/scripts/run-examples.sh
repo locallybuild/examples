@@ -27,7 +27,7 @@ run_example() {
       "$tool" init -input=false || return 1
 
       # Destroy even when the apply fails, so that anything it did create
-      # doesn't collide with the next example (many share a Resource Group).
+      # doesn't collide with the next example (e.g. a globally-unique name).
       locally run "$tool" apply -auto-approve -input=false
       local applied=$?
       locally run "$tool" destroy -auto-approve -input=false

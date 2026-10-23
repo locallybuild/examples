@@ -17,7 +17,7 @@ locals {
 }
 
 resource "azurerm_resource_group" "example" {
-  name     = "terraform-resources"
+  name     = "terraform-azurerm-network-interface"
   location = local.location
   tags = {
     "source" : "terraform"
