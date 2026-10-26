@@ -23,6 +23,7 @@ Unlike the other examples in this repository, which each focus on provisioning a
 * [MySQL-backed app on App Service](https://github.com/locallybuild/example-app-service-mysql) - a Python app deployed to App Service that works with MySQL.
 * [PostgreSQL-backed app on App Service](https://github.com/locallybuild/example-app-service-postgresql) - an app deployed to App Service that writes to PostgreSQL.
 * [WordPress on App Service](https://github.com/locallybuild/example-app-service-wordpress) - WordPress running on App Service, backed by MySQL.
+* [SAML-powered CRM on App Service](https://github.com/locallybuild/example-app-service-saml) - a SAML-based CRM application deployed to App Service.
 * [Web Arena Game on App Service](https://github.com/locallybuild/example-app-service-arena-game) - a browser-based arena game provisioned to App Service.
 
 ## Container Instances

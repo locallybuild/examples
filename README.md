@@ -27,6 +27,7 @@ Complete, end-to-end applications (infrastructure and code together), each in it
 * [MySQL-backed app on App Service](https://github.com/locallybuild/example-app-service-mysql): A Python app deployed to App Service that works with MySQL.
 * [PostgreSQL-backed app on App Service](https://github.com/locallybuild/example-app-service-postgresql): An app deployed to App Service that writes to PostgreSQL.
 * [WordPress on App Service](https://github.com/locallybuild/example-app-service-wordpress): WordPress running on App Service, backed by MySQL.
+* [SAML-powered CRM on App Service](https://github.com/locallybuild/example-app-service-saml): A SAML-based CRM application deployed to App Service.
 * [Web Arena Game on App Service](https://github.com/locallybuild/example-app-service-arena-game): A browser-based arena game provisioned to App Service.
 
 #### Container Instances
