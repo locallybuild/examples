@@ -47,6 +47,7 @@ Complete, end-to-end applications (infrastructure and code together), each in it
 See [`arm-templates/`](./arm-templates/) for more information.
 
 * [Deploy an Action Group to Locally using an ARM Template](./arm-templates/action-group/): Provisions an Action Group with a single email receiver, into a Resource Group of your choosing.
+* [Deploy an API Management Service to Locally using an ARM Template](./arm-templates/api-management/): Provisions an API Management Service (Developer SKU), an API and an Operation within it, into a Resource Group of your choosing.
 * [Deploy an App Configuration Store to Locally using an ARM Template](./arm-templates/app-configuration/): Provisions an App Configuration Store (Free SKU), into a Resource Group of your choosing.
 * [Deploy an App Service Plan to Locally using an ARM Template](./arm-templates/app-service-plan/): Provisions a Linux App Service Plan (B1 SKU), into a Resource Group of your choosing.
 * [Deploy an Application Insights Component to Locally using an ARM Template](./arm-templates/application-insights/): Provisions a Log Analytics Workspace and a workspace-based Application Insights component, into a Resource Group of your choosing.
@@ -59,6 +60,7 @@ See [`arm-templates/`](./arm-templates/) for more information.
 * [Deploy a Cosmos DB SQL Database to Locally using an ARM Template](./arm-templates/cosmosdb-sql-database/): Provisions a Cosmos DB for NoSQL account and a SQL Database with 400 RU/s of provisioned throughput, into a Resource Group of your choosing.
 * [Deploy a DDOS Protection Plan to Locally using an ARM Template](./arm-templates/ddos-protection-plan/): Provisions a DDOS Protection Plan, into a Resource Group of your choosing.
 * [Deploy a DNS Zone to Locally using an ARM Template](./arm-templates/dns-zone/): Provisions a public DNS Zone, into a Resource Group of your choosing.
+* [Deploy a Durable Functions App to Locally using an ARM Template](./arm-templates/durable-functions/): Provisions a Storage Account, a Durable Task Scheduler with a Task Hub, a Linux App Service Plan and a Linux Function App which uses the Durable Task Scheduler as its Durable Functions backend, into a Resource Group of your choosing.
 * [Deploy an Entra Application to Locally using an ARM Template](./arm-templates/entra-application/): Provisions an Entra Application exposing a delegated `Data.Read` scope and an application `Data.Read.All` App Role, owned by a User from the seeded example directory.
 * [Deploy an Entra Group to Locally using an ARM Template](./arm-templates/entra-group/): Provisions an Entra Security Group, with an Owner, Members and a nested Group from the seeded example directory.
 * [Deploy an Entra Service Principal to Locally using an ARM Template](./arm-templates/entra-service-principal/): Provisions an Entra Application and a Service Principal for it.
@@ -76,6 +78,7 @@ See [`arm-templates/`](./arm-templates/) for more information.
 * [Deploy a Log Analytics Workspace to Locally using an ARM Template](./arm-templates/log-analytics-workspace/): Provisions a Log Analytics Workspace, into a Resource Group of your choosing.
 * [Deploy a Managed Disk to Locally using an ARM Template](./arm-templates/managed-disk/): Provisions an empty 32 GB Managed Disk, into a Resource Group of your choosing.
 * [Deploy a Management Lock to Locally using an ARM Template](./arm-templates/management-lock/): Provisions a `CanNotDelete` Management Lock on the Resource Group, into a Resource Group of your choosing.
+* [Deploy a MySQL Flexible Server to Locally using an ARM Template](./arm-templates/mysql-flexible-server/): Provisions a MySQL Flexible Server and a Database, into a Resource Group of your choosing.
 * [Deploy a NAT Gateway to Locally using an ARM Template](./arm-templates/nat-gateway/): Provisions a Public IP Address, a NAT Gateway, and a Virtual Network whose Subnet routes outbound traffic through the NAT Gateway, into a Resource Group of your choosing.
 * [Deploy a Network Interface to Locally using an ARM Template](./arm-templates/network-interface/): Provisions a Virtual Network, a Subnet and a Network Interface, into a Resource Group of your choosing.
 * [Deploy a Network Security Group to Locally using an ARM Template](./arm-templates/network-security-group/): Provisions a Network Security Group with an inbound rule allowing HTTPS, into a Resource Group of your choosing.
@@ -130,6 +133,7 @@ See [`azure-sdk-for-go/`](./azure-sdk-for-go/) for more information.
 See [`bicep/`](./bicep/) for more information.
 
 * [Deploy an Action Group to Locally using a Bicep Template](./bicep/action-group/): Provisions an Action Group with a single email receiver, into a Resource Group of your choosing.
+* [Deploy an API Management Service to Locally using a Bicep Template](./bicep/api-management/): Provisions an API Management Service (Developer SKU), an API and an Operation within it, into a Resource Group of your choosing.
 * [Deploy an App Configuration Store to Locally using a Bicep Template](./bicep/app-configuration/): Provisions an App Configuration Store (Free SKU), into a Resource Group of your choosing.
 * [Deploy an App Service Plan to Locally using a Bicep Template](./bicep/app-service-plan/): Provisions a Linux App Service Plan (B1 SKU), into a Resource Group of your choosing.
 * [Deploy an Application Insights Component to Locally using a Bicep Template](./bicep/application-insights/): Provisions a Log Analytics Workspace and a workspace-based Application Insights component, into a Resource Group of your choosing.
@@ -142,6 +146,7 @@ See [`bicep/`](./bicep/) for more information.
 * [Deploy a Cosmos DB SQL Database to Locally using a Bicep Template](./bicep/cosmosdb-sql-database/): Provisions a Cosmos DB for NoSQL account and a SQL Database with 400 RU/s of provisioned throughput, into a Resource Group of your choosing.
 * [Deploy a DDOS Protection Plan to Locally using a Bicep Template](./bicep/ddos-protection-plan/): Provisions a DDOS Protection Plan, into a Resource Group of your choosing.
 * [Deploy a DNS Zone to Locally using a Bicep Template](./bicep/dns-zone/): Provisions a public DNS Zone, into a Resource Group of your choosing.
+* [Deploy a Durable Functions App to Locally using a Bicep Template](./bicep/durable-functions/): Provisions a Storage Account, a Durable Task Scheduler with a Task Hub, a Linux App Service Plan and a Linux Function App which uses the Durable Task Scheduler as its Durable Functions backend, into a Resource Group of your choosing.
 * [Deploy an Entra Application to Locally using a Bicep Template](./bicep/entra-application/): Provisions an Entra Application exposing a delegated `Data.Read` scope and an application `Data.Read.All` App Role, owned by a User from the seeded example directory.
 * [Deploy an Entra Group to Locally using a Bicep Template](./bicep/entra-group/): Provisions an Entra Security Group, with an Owner, Members and a nested Group from the seeded example directory.
 * [Deploy an Entra Service Principal to Locally using a Bicep Template](./bicep/entra-service-principal/): Provisions an Entra Application and a Service Principal for it.
@@ -159,6 +164,7 @@ See [`bicep/`](./bicep/) for more information.
 * [Deploy a Log Analytics Workspace to Locally using a Bicep Template](./bicep/log-analytics-workspace/): Provisions a Log Analytics Workspace, into a Resource Group of your choosing.
 * [Deploy a Managed Disk to Locally using a Bicep Template](./bicep/managed-disk/): Provisions an empty 32 GB Managed Disk, into a Resource Group of your choosing.
 * [Deploy a Management Lock to Locally using a Bicep Template](./bicep/management-lock/): Provisions a `CanNotDelete` Management Lock on the Resource Group, into a Resource Group of your choosing.
+* [Deploy a MySQL Flexible Server to Locally using a Bicep Template](./bicep/mysql-flexible-server/): Provisions a MySQL Flexible Server and a Database, into a Resource Group of your choosing.
 * [Deploy a NAT Gateway to Locally using a Bicep Template](./bicep/nat-gateway/): Provisions a Public IP Address, a NAT Gateway, and a Virtual Network whose Subnet routes outbound traffic through the NAT Gateway, into a Resource Group of your choosing.
 * [Deploy a Network Interface to Locally using a Bicep Template](./bicep/network-interface/): Provisions a Virtual Network, a Subnet and a Network Interface, into a Resource Group of your choosing.
 * [Deploy a Network Security Group to Locally using a Bicep Template](./bicep/network-security-group/): Provisions a Network Security Group with an inbound rule allowing HTTPS, into a Resource Group of your choosing.
@@ -188,6 +194,7 @@ See [`bicep/`](./bicep/) for more information.
 See [`hashicorp-terraform/`](./hashicorp-terraform/) for more information.
 
 * [Deploy an Action Group to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-action-group/): Provisions a Resource Group containing an Action Group with a single email receiver.
+* [Deploy an API Management Service to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-api-management/): Provisions a Resource Group containing an API Management Service (Developer SKU), an API and an Operation within it.
 * [Deploy an App Configuration Store to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-app-configuration/): Provisions a Resource Group containing an App Configuration Store (Free SKU).
 * [Deploy an App Service Plan to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-app-service-plan/): Provisions a Resource Group containing a Linux App Service Plan (B1 SKU).
 * [Deploy an Application Insights Component to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-application-insights/): Provisions a Resource Group containing a Log Analytics Workspace and a workspace-based Application Insights component.
@@ -200,6 +207,7 @@ See [`hashicorp-terraform/`](./hashicorp-terraform/) for more information.
 * [Deploy a Cosmos DB SQL Database to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-cosmosdb-sql-database/): Provisions a Resource Group containing a Cosmos DB for NoSQL account and a SQL Database with 400 RU/s of provisioned throughput.
 * [Deploy a DDOS Protection Plan to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-ddos-protection-plan/): Provisions a Resource Group containing a DDOS Protection Plan.
 * [Deploy a DNS Zone to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-dns-zone/): Provisions a Resource Group containing a public DNS Zone.
+* [Deploy a Durable Functions App to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-durable-functions/): Provisions a Resource Group containing a Storage Account, a Durable Task Scheduler with a Task Hub, a Linux App Service Plan and a Linux Function App which uses the Durable Task Scheduler as its Durable Functions backend.
 * [Deploy an Event Grid Topic to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-eventgrid-topic/): Provisions a Resource Group containing an Event Grid custom Topic.
 * [Deploy an Event Hub to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-eventhub/): Provisions a Resource Group containing an Event Hubs Namespace, an Event Hub and a Consumer Group.
 * [Deploy an Event Hubs Namespace to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-eventhub-namespace/): Provisions a Resource Group containing an Event Hubs Namespace (Standard SKU).
@@ -213,6 +221,7 @@ See [`hashicorp-terraform/`](./hashicorp-terraform/) for more information.
 * [Deploy a Log Analytics Workspace to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-log-analytics-workspace/): Provisions a Resource Group containing a Log Analytics Workspace.
 * [Deploy a Managed Disk to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-managed-disk/): Provisions a Resource Group containing an empty 32 GB Managed Disk.
 * [Deploy a Management Lock to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-management-lock/): Provisions a Resource Group containing a `CanNotDelete` Management Lock on the Resource Group.
+* [Deploy a MySQL Flexible Server to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-mysql-flexible-server/): Provisions a Resource Group containing a MySQL Flexible Server and a Database.
 * [Deploy a NAT Gateway to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-nat-gateway/): Provisions a Resource Group containing a Public IP Address, a NAT Gateway, and a Virtual Network whose Subnet routes outbound traffic through the NAT Gateway.
 * [Deploy a Network Interface to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-network-interface/): Provisions a Resource Group containing a Virtual Network, a Subnet and a Network Interface.
 * [Deploy a Network Security Group to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-network-security-group/): Provisions a Resource Group containing a Network Security Group with an inbound rule allowing HTTPS.
@@ -238,6 +247,7 @@ See [`hashicorp-terraform/`](./hashicorp-terraform/) for more information.
 * [Deploy a Virtual Network with Subnets to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-virtual-network/): Provisions a Resource Group containing a Virtual Network with two Subnets.
 * [Deploy a Virtual Network Peering to Locally using Terraform and the `Azure/azapi` provider](./hashicorp-terraform/azapi-virtual-network-peering/): Provisions a Resource Group containing two Virtual Networks, peered with each other in both directions.
 * [Deploy an Action Group to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-action-group/): Provisions a Resource Group containing an Action Group with a single email receiver.
+* [Deploy an API Management Service to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-api-management/): Provisions a Resource Group containing an API Management Service (Developer SKU), an API and an Operation within it.
 * [Deploy an App Configuration Store to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-app-configuration/): Provisions a Resource Group containing an App Configuration Store (Free SKU).
 * [Deploy an App Service Plan to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-app-service-plan/): Provisions a Resource Group containing a Linux App Service Plan (B1 SKU).
 * [Deploy an Application Insights Component to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-application-insights/): Provisions a Resource Group containing a Log Analytics Workspace and a workspace-based Application Insights component.
@@ -250,6 +260,7 @@ See [`hashicorp-terraform/`](./hashicorp-terraform/) for more information.
 * [Deploy a Cosmos DB SQL Database to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-cosmosdb-sql-database/): Provisions a Resource Group containing a Cosmos DB for NoSQL account and a SQL Database with 400 RU/s of provisioned throughput.
 * [Deploy a DDOS Protection Plan to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-ddos-protection-plan/): Provisions a Resource Group containing a DDOS Protection Plan.
 * [Deploy a DNS Zone to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-dns-zone/): Provisions a Resource Group containing a public DNS Zone.
+* [Deploy a Durable Functions App to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-durable-functions/): Provisions a Resource Group containing a Storage Account, a Durable Task Scheduler with a Task Hub, a Linux App Service Plan and a Linux Function App which uses the Durable Task Scheduler as its Durable Functions backend.
 * [Deploy an Event Grid Topic to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-eventgrid-topic/): Provisions a Resource Group containing an Event Grid custom Topic.
 * [Deploy an Event Hub to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-eventhub/): Provisions a Resource Group containing an Event Hubs Namespace, an Event Hub and a Consumer Group.
 * [Deploy an Event Hubs Namespace to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-eventhub-namespace/): Provisions a Resource Group containing an Event Hubs Namespace (Standard SKU).
@@ -263,6 +274,7 @@ See [`hashicorp-terraform/`](./hashicorp-terraform/) for more information.
 * [Deploy a Log Analytics Workspace to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-log-analytics-workspace/): Provisions a Resource Group containing a Log Analytics Workspace.
 * [Deploy a Managed Disk to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-managed-disk/): Provisions a Resource Group containing an empty 32 GB Managed Disk.
 * [Deploy a Management Lock to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-management-lock/): Provisions a Resource Group containing a `CanNotDelete` Management Lock on the Resource Group.
+* [Deploy a MySQL Flexible Server to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-mysql-flexible-server/): Provisions a Resource Group containing a MySQL Flexible Server and a Database.
 * [Deploy a NAT Gateway to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-nat-gateway/): Provisions a Resource Group containing a Public IP Address, a NAT Gateway, and a Virtual Network whose Subnet routes outbound traffic through the NAT Gateway.
 * [Deploy a Network Interface to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-network-interface/): Provisions a Resource Group containing a Virtual Network, a Subnet and a Network Interface.
 * [Deploy a Network Security Group to Locally using Terraform and the `hashicorp/azurerm` provider](./hashicorp-terraform/azurerm-network-security-group/): Provisions a Resource Group containing a Network Security Group with an inbound rule allowing HTTPS.
@@ -293,6 +305,7 @@ See [`hashicorp-terraform/`](./hashicorp-terraform/) for more information.
 See [`opentofu/`](./opentofu/) for more information.
 
 * [Deploy an Action Group to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-action-group/): Provisions a Resource Group containing an Action Group with a single email receiver.
+* [Deploy an API Management Service to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-api-management/): Provisions a Resource Group containing an API Management Service (Developer SKU), an API and an Operation within it.
 * [Deploy an App Configuration Store to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-app-configuration/): Provisions a Resource Group containing an App Configuration Store (Free SKU).
 * [Deploy an App Service Plan to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-app-service-plan/): Provisions a Resource Group containing a Linux App Service Plan (B1 SKU).
 * [Deploy an Application Insights Component to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-application-insights/): Provisions a Resource Group containing a Log Analytics Workspace and a workspace-based Application Insights component.
@@ -305,6 +318,7 @@ See [`opentofu/`](./opentofu/) for more information.
 * [Deploy a Cosmos DB SQL Database to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-cosmosdb-sql-database/): Provisions a Resource Group containing a Cosmos DB for NoSQL account and a SQL Database with 400 RU/s of provisioned throughput.
 * [Deploy a DDOS Protection Plan to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-ddos-protection-plan/): Provisions a Resource Group containing a DDOS Protection Plan.
 * [Deploy a DNS Zone to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-dns-zone/): Provisions a Resource Group containing a public DNS Zone.
+* [Deploy a Durable Functions App to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-durable-functions/): Provisions a Resource Group containing a Storage Account, a Durable Task Scheduler with a Task Hub, a Linux App Service Plan and a Linux Function App which uses the Durable Task Scheduler as its Durable Functions backend.
 * [Deploy an Event Grid Topic to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-eventgrid-topic/): Provisions a Resource Group containing an Event Grid custom Topic.
 * [Deploy an Event Hub to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-eventhub/): Provisions a Resource Group containing an Event Hubs Namespace, an Event Hub and a Consumer Group.
 * [Deploy an Event Hubs Namespace to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-eventhub-namespace/): Provisions a Resource Group containing an Event Hubs Namespace (Standard SKU).
@@ -318,6 +332,7 @@ See [`opentofu/`](./opentofu/) for more information.
 * [Deploy a Log Analytics Workspace to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-log-analytics-workspace/): Provisions a Resource Group containing a Log Analytics Workspace.
 * [Deploy a Managed Disk to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-managed-disk/): Provisions a Resource Group containing an empty 32 GB Managed Disk.
 * [Deploy a Management Lock to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-management-lock/): Provisions a Resource Group containing a `CanNotDelete` Management Lock on the Resource Group.
+* [Deploy a MySQL Flexible Server to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-mysql-flexible-server/): Provisions a Resource Group containing a MySQL Flexible Server and a Database.
 * [Deploy a NAT Gateway to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-nat-gateway/): Provisions a Resource Group containing a Public IP Address, a NAT Gateway, and a Virtual Network whose Subnet routes outbound traffic through the NAT Gateway.
 * [Deploy a Network Interface to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-network-interface/): Provisions a Resource Group containing a Virtual Network, a Subnet and a Network Interface.
 * [Deploy a Network Security Group to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-network-security-group/): Provisions a Resource Group containing a Network Security Group with an inbound rule allowing HTTPS.
@@ -343,6 +358,7 @@ See [`opentofu/`](./opentofu/) for more information.
 * [Deploy a Virtual Network with Subnets to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-virtual-network/): Provisions a Resource Group containing a Virtual Network with two Subnets.
 * [Deploy a Virtual Network Peering to Locally using OpenTofu and the `Azure/azapi` provider](./opentofu/azapi-virtual-network-peering/): Provisions a Resource Group containing two Virtual Networks, peered with each other in both directions.
 * [Deploy an Action Group to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-action-group/): Provisions a Resource Group containing an Action Group with a single email receiver.
+* [Deploy an API Management Service to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-api-management/): Provisions a Resource Group containing an API Management Service (Developer SKU), an API and an Operation within it.
 * [Deploy an App Configuration Store to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-app-configuration/): Provisions a Resource Group containing an App Configuration Store (Free SKU).
 * [Deploy an App Service Plan to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-app-service-plan/): Provisions a Resource Group containing a Linux App Service Plan (B1 SKU).
 * [Deploy an Application Insights Component to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-application-insights/): Provisions a Resource Group containing a Log Analytics Workspace and a workspace-based Application Insights component.
@@ -355,6 +371,7 @@ See [`opentofu/`](./opentofu/) for more information.
 * [Deploy a Cosmos DB SQL Database to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-cosmosdb-sql-database/): Provisions a Resource Group containing a Cosmos DB for NoSQL account and a SQL Database with 400 RU/s of provisioned throughput.
 * [Deploy a DDOS Protection Plan to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-ddos-protection-plan/): Provisions a Resource Group containing a DDOS Protection Plan.
 * [Deploy a DNS Zone to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-dns-zone/): Provisions a Resource Group containing a public DNS Zone.
+* [Deploy a Durable Functions App to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-durable-functions/): Provisions a Resource Group containing a Storage Account, a Durable Task Scheduler with a Task Hub, a Linux App Service Plan and a Linux Function App which uses the Durable Task Scheduler as its Durable Functions backend.
 * [Deploy an Event Grid Topic to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-eventgrid-topic/): Provisions a Resource Group containing an Event Grid custom Topic.
 * [Deploy an Event Hub to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-eventhub/): Provisions a Resource Group containing an Event Hubs Namespace, an Event Hub and a Consumer Group.
 * [Deploy an Event Hubs Namespace to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-eventhub-namespace/): Provisions a Resource Group containing an Event Hubs Namespace (Standard SKU).
@@ -368,6 +385,7 @@ See [`opentofu/`](./opentofu/) for more information.
 * [Deploy a Log Analytics Workspace to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-log-analytics-workspace/): Provisions a Resource Group containing a Log Analytics Workspace.
 * [Deploy a Managed Disk to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-managed-disk/): Provisions a Resource Group containing an empty 32 GB Managed Disk.
 * [Deploy a Management Lock to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-management-lock/): Provisions a Resource Group containing a `CanNotDelete` Management Lock on the Resource Group.
+* [Deploy a MySQL Flexible Server to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-mysql-flexible-server/): Provisions a Resource Group containing a MySQL Flexible Server and a Database.
 * [Deploy a NAT Gateway to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-nat-gateway/): Provisions a Resource Group containing a Public IP Address, a NAT Gateway, and a Virtual Network whose Subnet routes outbound traffic through the NAT Gateway.
 * [Deploy a Network Interface to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-network-interface/): Provisions a Resource Group containing a Virtual Network, a Subnet and a Network Interface.
 * [Deploy a Network Security Group to Locally using OpenTofu and the `opentofu/azurerm` provider](./opentofu/azurerm-network-security-group/): Provisions a Resource Group containing a Network Security Group with an inbound rule allowing HTTPS.

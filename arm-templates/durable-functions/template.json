@@ -1,0 +1,119 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "storageAccountName": "exdurablearmtemplatesa",
+    "appServicePlanName": "example-durable-functions-plan-from-armtemplate",
+    "functionAppName": "example-durable-functions-from-armtemplate",
+    "schedulerName": "example-dts-from-armtemplate",
+    "taskHubName": "example-task-hub",
+    "durableTaskDataContributorRoleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '0ad04412-c4d5-4796-b79c-f76d14c8d402')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2026-06-01",
+      "name": "[variables('storageAccountName')]",
+      "location": "berlin",
+      "kind": "StorageV2",
+      "sku": {
+        "name": "Standard_LRS"
+      }
+    },
+    {
+      "type": "Microsoft.DurableTask/schedulers",
+      "apiVersion": "2026-02-01",
+      "name": "[variables('schedulerName')]",
+      "location": "berlin",
+      "properties": {
+        "ipAllowlist": [
+          "0.0.0.0/0"
+        ],
+        "sku": {
+          "name": "Consumption"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.DurableTask/schedulers/taskHubs",
+      "apiVersion": "2026-02-01",
+      "name": "[format('{0}/{1}', variables('schedulerName'), variables('taskHubName'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.DurableTask/schedulers', variables('schedulerName'))]"
+      ],
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2026-03-15",
+      "name": "[variables('appServicePlanName')]",
+      "location": "berlin",
+      "kind": "linux",
+      "sku": {
+        "name": "B1"
+      },
+      "properties": {
+        "reserved": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2026-03-15",
+      "name": "[variables('functionAppName')]",
+      "location": "berlin",
+      "kind": "functionapp,linux",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "[resourceId('Microsoft.DurableTask/schedulers/taskHubs', variables('schedulerName'), variables('taskHubName'))]"
+      ],
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "siteConfig": {
+          "linuxFxVersion": "Python|3.12",
+          "appSettings": [
+            {
+              "name": "AzureWebJobsStorage",
+              "value": "[format('DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={2}', variables('storageAccountName'), listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2026-06-01').keys[0].value, environment().suffixes.storage)]"
+            },
+            {
+              "name": "FUNCTIONS_EXTENSION_VERSION",
+              "value": "~4"
+            },
+            {
+              "name": "FUNCTIONS_WORKER_RUNTIME",
+              "value": "python"
+            },
+            {
+              "name": "DURABLE_TASK_SCHEDULER_CONNECTION_STRING",
+              "value": "[format('Endpoint={0};Authentication=ManagedIdentity', reference(resourceId('Microsoft.DurableTask/schedulers', variables('schedulerName')), '2026-02-01').endpoint)]"
+            },
+            {
+              "name": "TASKHUB_NAME",
+              "value": "[variables('taskHubName')]"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "comments": "Grants the Function App's System-Assigned Identity access to the Durable Task Scheduler.",
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2022-04-01",
+      "scope": "[resourceId('Microsoft.DurableTask/schedulers', variables('schedulerName'))]",
+      "name": "[guid(resourceId('Microsoft.DurableTask/schedulers', variables('schedulerName')), variables('functionAppName'), variables('durableTaskDataContributorRoleDefinitionId'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.DurableTask/schedulers', variables('schedulerName'))]",
+        "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
+      ],
+      "properties": {
+        "roleDefinitionId": "[variables('durableTaskDataContributorRoleDefinitionId')]",
+        "principalId": "[reference(resourceId('Microsoft.Web/sites', variables('functionAppName')), '2026-03-15', 'full').identity.principalId]",
+        "principalType": "ServicePrincipal"
+      }
+    }
+  ]
+}
