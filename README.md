@@ -30,6 +30,10 @@ Complete, end-to-end applications (infrastructure and code together), each in it
 * [SAML-powered CRM on App Service](https://github.com/locallybuild/example-app-service-saml): A SAML-based CRM application deployed to App Service.
 * [Web Arena Game on App Service](https://github.com/locallybuild/example-app-service-arena-game): A browser-based arena game provisioned to App Service.
 
+#### Container Apps
+
+* [Web Arena Game on Container Apps](https://github.com/locallybuild/example-container-apps-arena-game): A browser-based arena game deployed to Container Apps, with its leaderboard on a mounted Azure Files share.
+
 #### Container Instances
 
 * [Redis-backed app on Container Instances](https://github.com/locallybuild/example-container-instance-redis): An app running in a Container Instance that reads from and writes to Redis.
