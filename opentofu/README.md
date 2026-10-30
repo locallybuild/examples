@@ -29,6 +29,7 @@ Each resource has equivalent examples for both the `opentofu/azurerm` and `Azure
 ### Examples using the `opentofu/azurerm` provider
 
 * [Deploying an Action Group to Locally using the `opentofu/azurerm` provider](azurerm-action-group/)
+* [Deploying an API Management Service to Locally using the `opentofu/azurerm` provider](azurerm-api-management/)
 * [Deploying an App Configuration Store to Locally using the `opentofu/azurerm` provider](azurerm-app-configuration/)
 * [Deploying an App Service Plan to Locally using the `opentofu/azurerm` provider](azurerm-app-service-plan/)
 * [Deploying an Application Insights Component to Locally using the `opentofu/azurerm` provider](azurerm-application-insights/)
@@ -42,6 +43,7 @@ Each resource has equivalent examples for both the `opentofu/azurerm` and `Azure
 * [Deploying a Custom Role Definition to Locally using the `opentofu/azurerm` provider](azurerm-role-definition/)
 * [Deploying a DDOS Protection Plan to Locally using the `opentofu/azurerm` provider](azurerm-ddos-protection-plan/)
 * [Deploying a DNS Zone to Locally using the `opentofu/azurerm` provider](azurerm-dns-zone/)
+* [Deploying a Durable Functions App to Locally using the `opentofu/azurerm` provider](azurerm-durable-functions/)
 * [Deploying an Event Grid Topic to Locally using the `opentofu/azurerm` provider](azurerm-eventgrid-topic/)
 * [Deploying an Event Hub to Locally using the `opentofu/azurerm` provider](azurerm-eventhub/)
 * [Deploying an Event Hubs Namespace to Locally using the `opentofu/azurerm` provider](azurerm-eventhub-namespace/)
@@ -55,6 +57,7 @@ Each resource has equivalent examples for both the `opentofu/azurerm` and `Azure
 * [Deploying a Log Analytics Workspace to Locally using the `opentofu/azurerm` provider](azurerm-log-analytics-workspace/)
 * [Deploying a Managed Disk to Locally using the `opentofu/azurerm` provider](azurerm-managed-disk/)
 * [Deploying a Management Lock to Locally using the `opentofu/azurerm` provider](azurerm-management-lock/)
+* [Deploying a MySQL Flexible Server to Locally using the `opentofu/azurerm` provider](azurerm-mysql-flexible-server/)
 * [Deploying a NAT Gateway to Locally using the `opentofu/azurerm` provider](azurerm-nat-gateway/)
 * [Deploying a Network Interface to Locally using the `opentofu/azurerm` provider](azurerm-network-interface/)
 * [Deploying a Network Security Group to Locally using the `opentofu/azurerm` provider](azurerm-network-security-group/)
@@ -82,6 +85,7 @@ Each resource has equivalent examples for both the `opentofu/azurerm` and `Azure
 ### Examples using the `Azure/azapi` provider
 
 * [Deploying an Action Group to Locally using the `Azure/azapi` provider](azapi-action-group/)
+* [Deploying an API Management Service to Locally using the `Azure/azapi` provider](azapi-api-management/)
 * [Deploying an App Configuration Store to Locally using the `Azure/azapi` provider](azapi-app-configuration/)
 * [Deploying an App Service Plan to Locally using the `Azure/azapi` provider](azapi-app-service-plan/)
 * [Deploying an Application Insights Component to Locally using the `Azure/azapi` provider](azapi-application-insights/)
@@ -95,6 +99,7 @@ Each resource has equivalent examples for both the `opentofu/azurerm` and `Azure
 * [Deploying a Custom Role Definition to Locally using the `Azure/azapi` provider](azapi-role-definition/)
 * [Deploying a DDOS Protection Plan to Locally using the `Azure/azapi` provider](azapi-ddos-protection-plan/)
 * [Deploying a DNS Zone to Locally using the `Azure/azapi` provider](azapi-dns-zone/)
+* [Deploying a Durable Functions App to Locally using the `Azure/azapi` provider](azapi-durable-functions/)
 * [Deploying an Event Grid Topic to Locally using the `Azure/azapi` provider](azapi-eventgrid-topic/)
 * [Deploying an Event Hub to Locally using the `Azure/azapi` provider](azapi-eventhub/)
 * [Deploying an Event Hubs Namespace to Locally using the `Azure/azapi` provider](azapi-eventhub-namespace/)
@@ -108,6 +113,7 @@ Each resource has equivalent examples for both the `opentofu/azurerm` and `Azure
 * [Deploying a Log Analytics Workspace to Locally using the `Azure/azapi` provider](azapi-log-analytics-workspace/)
 * [Deploying a Managed Disk to Locally using the `Azure/azapi` provider](azapi-managed-disk/)
 * [Deploying a Management Lock to Locally using the `Azure/azapi` provider](azapi-management-lock/)
+* [Deploying a MySQL Flexible Server to Locally using the `Azure/azapi` provider](azapi-mysql-flexible-server/)
 * [Deploying a NAT Gateway to Locally using the `Azure/azapi` provider](azapi-nat-gateway/)
 * [Deploying a Network Interface to Locally using the `Azure/azapi` provider](azapi-network-interface/)
 * [Deploying a Network Security Group to Locally using the `Azure/azapi` provider](azapi-network-security-group/)

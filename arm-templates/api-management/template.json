@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.ApiManagement/service",
+      "apiVersion": "2024-05-01",
+      "name": "example-apim-from-armtemplate",
+      "location": "berlin",
+      "sku": {
+        "name": "Developer",
+        "capacity": 1
+      },
+      "properties": {
+        "publisherEmail": "admin@example.com",
+        "publisherName": "Example Publisher"
+      }
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2024-05-01",
+      "name": "example-apim-from-armtemplate/example-api",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service', 'example-apim-from-armtemplate')]"
+      ],
+      "properties": {
+        "displayName": "Example API",
+        "path": "example",
+        "protocols": [
+          "https"
+        ],
+        "serviceUrl": "https://httpbin.org"
+      }
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2024-05-01",
+      "name": "example-apim-from-armtemplate/example-api/get-status",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', 'example-apim-from-armtemplate', 'example-api')]"
+      ],
+      "properties": {
+        "displayName": "Get Status",
+        "method": "GET",
+        "urlTemplate": "/status/{code}",
+        "templateParameters": [
+          {
+            "name": "code",
+            "type": "number",
+            "required": true
+          }
+        ]
+      }
+    }
+  ]
+}

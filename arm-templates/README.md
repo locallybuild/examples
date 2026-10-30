@@ -25,6 +25,7 @@ Find out more about [Locally](https://locally.build) and how to get started in [
 ## Examples
 
 * [Deploying an Action Group to Locally using an ARM Template](action-group/)
+* [Deploying an API Management Service to Locally using an ARM Template](api-management/)
 * [Deploying an App Configuration Store to Locally using an ARM Template](app-configuration/)
 * [Deploying an App Service Plan to Locally using an ARM Template](app-service-plan/)
 * [Deploying an Application Insights Component to Locally using an ARM Template](application-insights/)
@@ -38,6 +39,7 @@ Find out more about [Locally](https://locally.build) and how to get started in [
 * [Deploying a Custom Role Definition to Locally using an ARM Template](role-definition/)
 * [Deploying a DDOS Protection Plan to Locally using an ARM Template](ddos-protection-plan/)
 * [Deploying a DNS Zone to Locally using an ARM Template](dns-zone/)
+* [Deploying a Durable Functions App to Locally using an ARM Template](durable-functions/)
 * [Deploying an Entra Application to Locally using an ARM Template](entra-application/)
 * [Deploying an Entra Group to Locally using an ARM Template](entra-group/)
 * [Deploying an Entra Service Principal to Locally using an ARM Template](entra-service-principal/)
@@ -55,6 +57,7 @@ Find out more about [Locally](https://locally.build) and how to get started in [
 * [Deploying a Log Analytics Workspace to Locally using an ARM Template](log-analytics-workspace/)
 * [Deploying a Managed Disk to Locally using an ARM Template](managed-disk/)
 * [Deploying a Management Lock to Locally using an ARM Template](management-lock/)
+* [Deploying a MySQL Flexible Server to Locally using an ARM Template](mysql-flexible-server/)
 * [Deploying a NAT Gateway to Locally using an ARM Template](nat-gateway/)
 * [Deploying a Network Interface to Locally using an ARM Template](network-interface/)
 * [Deploying a Network Security Group to Locally using an ARM Template](network-security-group/)
