@@ -84,11 +84,13 @@ jobs:
           team-uuid: ${{ vars.LOCALLY_TEAM_UUID }}
           plugins: ${{ matrix.plugins != '' && 'custom' || 'none' }}
           plugins-list: ${{ matrix.plugins }}
+	  accept-sql-server-licence: true
 
       - name: Run examples
         env:
           KIND: ${{ matrix.kind }}
           PATHS: ${{ matrix.paths }}
+	  LOCALLY_ACCEPT_SQL_SERVER_LICENCE: true
         run: |
           # PATHS is space-separated, and split into one argument per example.
           # shellcheck disable=SC2086
