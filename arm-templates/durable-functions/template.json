@@ -1,6 +1,15 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The Azure Region (or Locally Region) to deploy the resources into."
+      }
+    }
+  },
   "variables": {
     "storageAccountName": "exdurablearmtemplatesa",
     "appServicePlanName": "example-durable-functions-plan-from-armtemplate",
@@ -14,7 +23,7 @@
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2026-06-01",
       "name": "[variables('storageAccountName')]",
-      "location": "berlin",
+      "location": "[parameters('location')]",
       "kind": "StorageV2",
       "sku": {
         "name": "Standard_LRS"
@@ -24,7 +33,7 @@
       "type": "Microsoft.DurableTask/schedulers",
       "apiVersion": "2026-02-01",
       "name": "[variables('schedulerName')]",
-      "location": "berlin",
+      "location": "[parameters('location')]",
       "properties": {
         "ipAllowlist": [
           "0.0.0.0/0"
@@ -47,7 +56,7 @@
       "type": "Microsoft.Web/serverfarms",
       "apiVersion": "2026-03-15",
       "name": "[variables('appServicePlanName')]",
-      "location": "berlin",
+      "location": "[parameters('location')]",
       "kind": "linux",
       "sku": {
         "name": "B1"
@@ -60,7 +69,7 @@
       "type": "Microsoft.Web/sites",
       "apiVersion": "2026-03-15",
       "name": "[variables('functionAppName')]",
-      "location": "berlin",
+      "location": "[parameters('location')]",
       "kind": "functionapp,linux",
       "identity": {
         "type": "SystemAssigned"

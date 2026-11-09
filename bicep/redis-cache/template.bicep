@@ -1,6 +1,9 @@
+@description('The Azure Region (or Locally Region) to deploy the resources into.')
+param location string = resourceGroup().location
+
 resource redisCache 'Microsoft.Cache/redis@2024-11-01' = {
   name: 'example-redis-from-bicep'
-  location: 'berlin'
+  location: location
   properties: {
     sku: {
       name: 'Basic'

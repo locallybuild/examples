@@ -15,11 +15,19 @@ run_example() {
   name="$(basename "$PWD")"
 
   case "$kind" in
-    arm)
-      locally deploy --resource-group "ci-${name}" template.json
-      ;;
-    bicep)
-      locally deploy --resource-group "ci-${name}" template.bicep
+    arm | bicep)
+      local template=template.json params=parameters.locally.json
+      if [[ "$kind" == "bicep" ]]; then
+        template=template.bicep
+        params=parameters.locally.bicepparam
+      fi
+
+      # Examples with regional resources take their location from a
+      # per-target parameters file; the others (e.g. those which only contain
+      # global resources) don't have one.
+      local args=(--resource-group "ci-${name}")
+      [[ -f "$params" ]] && args+=(--parameters "$params")
+      locally deploy "${args[@]}" "$template"
       ;;
     terraform | opentofu)
       local tool=terraform

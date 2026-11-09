@@ -1,12 +1,21 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The Azure Region (or Locally Region) to deploy the resources into."
+      }
+    }
+  },
   "resources": [
     {
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2025-07-01",
       "name": "example-nat-public-ip-from-armtemplate",
-      "location": "berlin",
+      "location": "[parameters('location')]",
       "properties": {
         "publicIPAllocationMethod": "Static"
       },
@@ -18,7 +27,7 @@
       "type": "Microsoft.Network/natGateways",
       "apiVersion": "2025-07-01",
       "name": "example-nat-gateway-from-armtemplate",
-      "location": "berlin",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Network/publicIPAddresses', 'example-nat-public-ip-from-armtemplate')]"
       ],
@@ -37,7 +46,7 @@
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "2025-07-01",
       "name": "example-vnet-from-armtemplate",
-      "location": "berlin",
+      "location": "[parameters('location')]",
       "properties": {
         "addressSpace": {
           "addressPrefixes": [

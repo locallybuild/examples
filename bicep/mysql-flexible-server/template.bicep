@@ -1,6 +1,9 @@
+@description('The Azure Region (or Locally Region) to deploy the resources into.')
+param location string = resourceGroup().location
+
 resource mysqlFlexibleServer 'Microsoft.DBforMySQL/flexibleServers@2024-12-30' = {
   name: 'example-mysql-from-bicep'
-  location: 'berlin'
+  location: location
   sku: {
     name: 'Standard_B1ms'
     tier: 'Burstable'

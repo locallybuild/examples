@@ -1,6 +1,9 @@
+@description('The Azure Region (or Locally Region) to deploy the resources into.')
+param location string = resourceGroup().location
+
 resource virtualNetwork1 'Microsoft.Network/virtualNetworks@2025-07-01' = {
   name: 'example-vnet-1-from-bicep'
-  location: 'berlin'
+  location: location
   properties: {
     addressSpace: {
       addressPrefixes: [
@@ -12,7 +15,7 @@ resource virtualNetwork1 'Microsoft.Network/virtualNetworks@2025-07-01' = {
 
 resource virtualNetwork2 'Microsoft.Network/virtualNetworks@2025-07-01' = {
   name: 'example-vnet-2-from-bicep'
-  location: 'berlin'
+  location: location
   properties: {
     addressSpace: {
       addressPrefixes: [

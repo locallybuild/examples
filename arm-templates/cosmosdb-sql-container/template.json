@@ -1,12 +1,21 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The Azure Region (or Locally Region) to deploy the resources into."
+      }
+    }
+  },
   "resources": [
     {
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "apiVersion": "2026-03-15",
       "name": "ex-cosmos-sqlcont-from-armtemplate",
-      "location": "berlin",
+      "location": "[parameters('location')]",
       "kind": "GlobalDocumentDB",
       "properties": {
         "databaseAccountOfferType": "Standard",
@@ -15,7 +24,7 @@
         },
         "locations": [
           {
-            "locationName": "berlin",
+            "locationName": "[parameters('location')]",
             "failoverPriority": 0
           }
         ]
