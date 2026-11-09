@@ -3,8 +3,8 @@ module github.com/locallybuild/examples/pulumi/azure-classic-golang/virtual-netw
 go 1.27.1
 
 require (
-	github.com/pulumi/pulumi-azure/sdk/v6 v6.40.1
-	github.com/pulumi/pulumi/sdk/v3 v3.271.0
+	github.com/pulumi/pulumi-azure/sdk/v6 v6.40.2
+	github.com/pulumi/pulumi/sdk/v3 v3.272.0
 )
 
 require (
