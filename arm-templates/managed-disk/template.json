@@ -1,12 +1,21 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The Azure Region (or Locally Region) to deploy the resources into."
+      }
+    }
+  },
   "resources": [
     {
       "type": "Microsoft.Compute/disks",
       "apiVersion": "2026-03-02",
       "name": "example-disk-from-armtemplate",
-      "location": "berlin",
+      "location": "[parameters('location')]",
       "sku": {
         "name": "Standard_LRS"
       },

@@ -1,6 +1,9 @@
+@description('The Azure Region (or Locally Region) to deploy the resources into.')
+param location string = resourceGroup().location
+
 resource storageAccount 'Microsoft.Storage/storageAccounts@2026-04-01' = {
   name: 'exfuncappbicepsa'
-  location: 'berlin'
+  location: location
   kind: 'StorageV2'
   sku: {
     name: 'Standard_LRS'
@@ -9,7 +12,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2026-04-01' = {
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2025-03-01' = {
   name: 'example-function-app-plan-from-bicep'
-  location: 'berlin'
+  location: location
   kind: 'linux'
   sku: {
     name: 'B1'
@@ -21,7 +24,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2025-03-01' = {
 
 resource functionApp 'Microsoft.Web/sites@2025-03-01' = {
   name: 'example-function-app-from-bicep'
-  location: 'berlin'
+  location: location
   kind: 'functionapp,linux'
   properties: {
     serverFarmId: appServicePlan.id

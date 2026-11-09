@@ -23,7 +23,14 @@ This example provisions a `CanNotDelete` Management Lock on the Resource Group, 
 
 * [Locally Build](https://locally.build).
 * The [Bicep CLI](https://github.com/Azure/bicep) available on your `PATH`.
+* The [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli) (only needed for Method 2, for deploying to Azure and for tearing it down).
 * Either [Docker](https://www.docker.com) or [Podman](https://podman.io) (recommended).
+
+## Choosing where to deploy
+
+This example deploys to [Locally](https://locally.build) by default, and can also be deployed to Azure.
+
+The resources in this example aren't tied to a specific Region, so the same template can be deployed to either without a parameters file.
 
 ## Running the example
 
@@ -57,13 +64,34 @@ locally run az deployment group create --resource-group example --template-file 
 
 See [the README for Bicep Templates](../README.md) for more information on how deployments work in Locally, and the current limitations.
 
+## Deploying to Azure
+
+The same template can be deployed to Azure using the Azure CLI, without Locally, once you're logged in (`az login`):
+
+```bash
+az group create --name example --location westeurope
+az deployment group create --resource-group example --template-file template.bicep
+```
+
+> [!WARNING]
+> Deploying to Azure creates real resources, which you'll be billed for.
+
 ## Notes
 
 As the lock prevents the Resource Group being deleted, it has to be removed first when tearing down the example - see below.
 
 ## Tearing it down
 
+In Locally:
+
 ```bash
 locally run az lock delete --name example-lock-from-bicep --resource-group example
 locally run az group delete --name example --yes
+```
+
+Or, in Azure:
+
+```bash
+az lock delete --name example-lock-from-bicep --resource-group example
+az group delete --name example --yes
 ```

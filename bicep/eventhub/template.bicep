@@ -1,6 +1,9 @@
+@description('The Azure Region (or Locally Region) to deploy the resources into.')
+param location string = resourceGroup().location
+
 resource eventHubNamespace 'Microsoft.EventHub/namespaces@2026-01-01' = {
   name: 'example-eh-from-bicep'
-  location: 'berlin'
+  location: location
   sku: {
     name: 'Standard'
     tier: 'Standard'

@@ -1,8 +1,11 @@
+@description('The Azure Region (or Locally Region) to deploy the resources into.')
+param location string = resourceGroup().location
+
 var loadBalancerName = 'example-lb-from-bicep'
 
 resource publicIPAddress 'Microsoft.Network/publicIPAddresses@2025-07-01' = {
   name: 'example-lb-public-ip-from-bicep'
-  location: 'berlin'
+  location: location
   sku: {
     name: 'Standard'
   }
@@ -13,7 +16,7 @@ resource publicIPAddress 'Microsoft.Network/publicIPAddresses@2025-07-01' = {
 
 resource loadBalancer 'Microsoft.Network/loadBalancers@2025-07-01' = {
   name: loadBalancerName
-  location: 'berlin'
+  location: location
   sku: {
     name: 'Standard'
   }

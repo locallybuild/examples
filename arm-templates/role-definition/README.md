@@ -24,8 +24,14 @@ This example provisions a Custom Role Definition assignable at the Resource Grou
 ## Requirements
 
 * [Locally Build](https://locally.build).
-* The [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli) (only needed for Method 2 and for tearing it down).
+* The [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli) (only needed for Method 2, for deploying to Azure and for tearing it down).
 * Either [Docker](https://www.docker.com) or [Podman](https://podman.io) (recommended).
+
+## Choosing where to deploy
+
+This example deploys to [Locally](https://locally.build) by default, and can also be deployed to Azure.
+
+The resources in this example aren't tied to a specific Region, so the same template can be deployed to either without a parameters file.
 
 ## Running the example
 
@@ -56,6 +62,18 @@ locally run az deployment group create --resource-group example --template-file 
 
 See [the README for ARM Templates](../README.md) for more information on how deployments work in Locally, and the current limitations.
 
+## Deploying to Azure
+
+The same template can be deployed to Azure using the Azure CLI, without Locally, once you're logged in (`az login`):
+
+```bash
+az group create --name example --location westeurope
+az deployment group create --resource-group example --template-file template.json
+```
+
+> [!WARNING]
+> Deploying to Azure creates real resources, which you'll be billed for.
+
 ## Notes
 
 This example uses API version `2022-05-01-preview` for the Role Definition, since Locally doesn't yet support Resource Group-scoped Role Definitions on the stable API versions ([issue](https://github.com/locallybuild/locally-cli/issues/11)).
@@ -64,9 +82,18 @@ Custom Role Definitions aren't removed when their Resource Group is deleted, so 
 
 ## Tearing it down
 
+In Locally:
+
 ```bash
 ROLE_ID=$(locally run az role definition list --name example-role-definition-from-armtemplate \
   --scope "$(locally run az group show --name example --query id -o tsv)" --query "[0].id" -o tsv)
 locally run az rest --method delete --url "$ROLE_ID?api-version=2022-05-01-preview"
 locally run az group delete --name example --yes
+```
+
+Or, in Azure:
+
+```bash
+az role definition delete --name example-role-definition-from-armtemplate --scope "$(az group show --name example --query id -o tsv)"
+az group delete --name example --yes
 ```

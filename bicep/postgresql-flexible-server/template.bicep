@@ -1,6 +1,9 @@
+@description('The Azure Region (or Locally Region) to deploy the resources into.')
+param location string = resourceGroup().location
+
 resource postgresqlFlexibleServer 'Microsoft.DBforPostgreSQL/flexibleServers@2025-08-01' = {
   name: 'example-postgresql-from-bicep'
-  location: 'berlin'
+  location: location
   sku: {
     name: 'Standard_B1ms'
     tier: 'Burstable'

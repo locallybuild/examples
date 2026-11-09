@@ -1,6 +1,15 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The Azure Region (or Locally Region) to deploy the resources into."
+      }
+    }
+  },
   "variables": {
     "vnetName": "example-vnet-from-armtemplate"
   },
@@ -9,7 +18,7 @@
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "2025-07-01",
       "name": "[variables('vnetName')]",
-      "location": "berlin",
+      "location": "[parameters('location')]",
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
@@ -33,7 +42,7 @@
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2025-07-01",
       "name": "example-nic-from-armtemplate",
-      "location": "berlin",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'), 'internal')]"
       ],

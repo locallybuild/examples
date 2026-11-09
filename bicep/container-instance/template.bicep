@@ -1,6 +1,9 @@
+@description('The Azure Region (or Locally Region) to deploy the resources into.')
+param location string = resourceGroup().location
+
 resource containerGroup 'Microsoft.ContainerInstance/containerGroups@2025-09-01' = {
   name: 'example-containergroup-from-bicep'
-  location: 'berlin'
+  location: location
   properties: {
     containers: [
       {

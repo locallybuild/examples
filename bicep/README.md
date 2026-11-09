@@ -81,6 +81,32 @@ Find out more about [Locally](https://locally.build) and how to get started in [
 * [Deploying a Virtual Network Peering to Locally using a Bicep Template](virtual-network-peering/)
 * [Deploying a Virtual Network with Subnets to Locally using a Bicep Template](virtual-network/)
 
+### Deploying to Locally or Azure
+
+Each example deploys to Locally by default, and (with the exception of the Entra examples) can also be deployed to Azure - the same template is used for both.
+
+The Region the resources are deployed into is controlled by a `location` parameter, which is set in a parameters file per target:
+
+* `parameters.locally.bicepparam` - deploys into the `berlin` Region in Locally (the default).
+* `parameters.azure.bicepparam` - deploys into the `westeurope` Region in Azure.
+
+For example, to deploy to Locally:
+
+```bash
+locally deploy --resource-group example --parameters parameters.locally.bicepparam template.bicep
+```
+
+Or, to deploy to Azure using the Azure CLI:
+
+```bash
+az group create --name example --location westeurope
+az deployment group create --resource-group example --template-file template.bicep --parameters parameters.azure.bicepparam
+```
+
+If no parameters file is specified, the resources are deployed into the same Region as the Resource Group. A handful of examples (such as DNS Zones) only contain resources which aren't tied to a Region, so they don't have a parameters file.
+
+The Entra examples reference the Users seeded into Locally's example directory (such as `ada.lovelace@default.tenants.locally`), so they're specific to Locally.
+
 ### The different types of Bicep Template Deployments
 
 It's worth calling out that there are different types of Bicep Template Deployments:

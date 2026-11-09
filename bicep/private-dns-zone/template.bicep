@@ -1,3 +1,6 @@
+@description('The Azure Region (or Locally Region) to deploy the resources into.')
+param location string = resourceGroup().location
+
 resource privateDnsZone 'Microsoft.Network/privateDnsZones@2024-06-01' = {
   name: 'example.internal'
   location: 'global'
@@ -5,7 +8,7 @@ resource privateDnsZone 'Microsoft.Network/privateDnsZones@2024-06-01' = {
 
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2025-07-01' = {
   name: 'example-vnet-from-bicep'
-  location: 'berlin'
+  location: location
   properties: {
     addressSpace: {
       addressPrefixes: [

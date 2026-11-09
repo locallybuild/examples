@@ -1,6 +1,9 @@
+@description('The Azure Region (or Locally Region) to deploy the resources into.')
+param location string = resourceGroup().location
+
 resource apiManagement 'Microsoft.ApiManagement/service@2024-05-01' = {
   name: 'example-apim-from-bicep'
-  location: 'berlin'
+  location: location
   sku: {
     name: 'Developer'
     capacity: 1

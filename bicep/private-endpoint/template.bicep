@@ -1,6 +1,9 @@
+@description('The Azure Region (or Locally Region) to deploy the resources into.')
+param location string = resourceGroup().location
+
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2025-07-01' = {
   name: 'example-vnet-from-bicep'
-  location: 'berlin'
+  location: location
   properties: {
     addressSpace: {
       addressPrefixes: [
@@ -20,7 +23,7 @@ resource subnet 'Microsoft.Network/virtualNetworks/subnets@2025-07-01' = {
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2026-04-01' = {
   name: 'expebicepsa'
-  location: 'berlin'
+  location: location
   kind: 'StorageV2'
   sku: {
     name: 'Standard_LRS'
@@ -29,7 +32,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2026-04-01' = {
 
 resource privateEndpoint 'Microsoft.Network/privateEndpoints@2025-07-01' = {
   name: 'example-private-endpoint-from-bicep'
-  location: 'berlin'
+  location: location
   properties: {
     subnet: {
       id: subnet.id

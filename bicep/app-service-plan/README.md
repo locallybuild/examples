@@ -23,8 +23,20 @@ This example provisions a Linux App Service Plan (B1 SKU), into a Resource Group
 
 * [Locally Build](https://locally.build).
 * The [Bicep CLI](https://github.com/Azure/bicep) available on your `PATH`.
+* The [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli) (only needed for Method 2, for deploying to Azure and for tearing it down).
 * Either [Docker](https://www.docker.com) or [Podman](https://podman.io) (recommended).
 * The Locally Plugin for `Microsoft.Web` installed (`locally plugin install --name Microsoft.Web`).
+
+## Choosing where to deploy
+
+This example deploys to [Locally](https://locally.build) by default, and can also be deployed to Azure.
+
+The Region the resources are deployed into is controlled by the `location` parameter, which is set in a parameters file per target:
+
+* [`parameters.locally.bicepparam`](parameters.locally.bicepparam) - deploys into the `berlin` Region in Locally (the default).
+* [`parameters.azure.bicepparam`](parameters.azure.bicepparam) - deploys into the `westeurope` Region in Azure.
+
+Update the `location` value in the relevant file to deploy into a different Region (`locally regions list` shows the Regions available in Locally). If no parameters file is specified, the resources are deployed into the same Region as the Resource Group.
 
 ## Running the example
 
@@ -41,7 +53,7 @@ With Locally running, in another terminal we can deploy the template using eithe
 Locally's built-in `deploy` command deploys the template, creating the Resource Group if it doesn't exist:
 
 ```bash
-locally deploy --resource-group example template.bicep
+locally deploy --resource-group example --parameters parameters.locally.bicepparam template.bicep
 ```
 
 > [!NOTE]
@@ -53,13 +65,33 @@ Omitting `--resource-group` generates a Resource Group name for you; `--subscrip
 
 ```bash
 locally run az group create --name example --location berlin
-locally run az deployment group create --resource-group example --template-file template.bicep
+locally run az deployment group create --resource-group example --template-file template.bicep --parameters parameters.locally.bicepparam
 ```
 
 See [the README for Bicep Templates](../README.md) for more information on how deployments work in Locally, and the current limitations.
 
+## Deploying to Azure
+
+The same template can be deployed to Azure using the Azure CLI, without Locally, once you're logged in (`az login`):
+
+```bash
+az group create --name example --location westeurope
+az deployment group create --resource-group example --template-file template.bicep --parameters parameters.azure.bicepparam
+```
+
+> [!WARNING]
+> Deploying to Azure creates real resources, which you'll be billed for.
+
 ## Tearing it down
+
+In Locally:
 
 ```bash
 locally run az group delete --name example --yes
+```
+
+Or, in Azure:
+
+```bash
+az group delete --name example --yes
 ```
