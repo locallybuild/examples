@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The Azure Region (or Locally Region) to deploy the resources into."
+      }
+    }
+  },
+  "variables": {
+    "clusterName": "example-horizondb-from-armtemplate"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.HorizonDb/clusters",
+      "apiVersion": "2026-10-01-preview",
+      "name": "[variables('clusterName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "postgreSqlVersion": "18",
+        "backup": {
+          "geoRedundancy": "Disabled"
+        }
+      }
+    },
+    {
+      "comments": "This is a local emulator example - real deployments should pass the administrator password in from a secret (e.g. a securestring parameter sourced from Key Vault).",
+      "type": "Microsoft.HorizonDb/clusters/authentications",
+      "apiVersion": "2026-10-01-preview",
+      "name": "[format('{0}/passwordMethod', variables('clusterName'))]",
+      "properties": {
+        "state": "Enabled",
+        "administratorLogin": "exampleadmin",
+        "administratorLoginPassword": "Example-Passw0rd!"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.HorizonDb/clusters', variables('clusterName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.HorizonDb/clusters/pools",
+      "apiVersion": "2026-10-01-preview",
+      "name": "[format('{0}/example-pool', variables('clusterName'))]",
+      "properties": {
+        "nodeCount": 1,
+        "highAvailability": {
+          "mode": "Disabled"
+        },
+        "computeModel": {
+          "type": "Provisioned",
+          "computeGeneration": 1,
+          "computeProcessor": "Intel",
+          "vCores": 4
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.HorizonDb/clusters/authentications', variables('clusterName'), 'passwordMethod')]"
+      ]
+    },
+    {
+      "type": "Microsoft.HorizonDb/clusters/pools/firewallRules",
+      "apiVersion": "2026-10-01-preview",
+      "name": "[format('{0}/example-pool/example-firewall-rule', variables('clusterName'))]",
+      "properties": {
+        "description": "Allows connections from an example IP range.",
+        "startIpAddress": "203.0.113.0",
+        "endIpAddress": "203.0.113.255"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.HorizonDb/clusters/pools', variables('clusterName'), 'example-pool')]"
+      ]
+    }
+  ]
+}
