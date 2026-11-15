@@ -72,12 +72,12 @@ jobs:
           cache: false
 
       - if: matrix.kind == 'dotnet'
-        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
           dotnet-version: 10.0.x
 
       - if: matrix.kind == 'pulumi'
-        uses: pulumi/actions@8e5e406f4007fca908480587cb9893c07090f58d # v7.0.0
+        uses: pulumi/actions@96c7761824268174e0d2a4e8c7d75671eebd24a7 # v7.1.0
 
       - uses: locallybuild/setup-locally@v1
         with:
