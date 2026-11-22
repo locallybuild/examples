@@ -4,11 +4,11 @@ terraform {
   required_providers {
     azurerm = {
       source  = "opentofu/azurerm"
-      version = "5.12.0"
+      version = "5.14.0"
     }
     azapi = {
       source  = "Azure/azapi"
-      version = "2.13.0"
+      version = "2.14.0"
     }
   }
 }
